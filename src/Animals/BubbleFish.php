@@ -1,6 +1,8 @@
 <?php
 namespace App\Animals;
 
-class BubbleFish extends Fish {
+
+
+class BubbleFish extends Fish   {
 
 }

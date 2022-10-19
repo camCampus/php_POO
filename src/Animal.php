@@ -1,7 +1,9 @@
 <?php
 namespace App;
 
-    abstract class Animal {
+
+
+    abstract class Animal  {
 
         //Attribut
         /** @var string $name */
