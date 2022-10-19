@@ -3,16 +3,14 @@
 namespace App\Animals;
 
 use App\Animal;
+use App\Interfaces\CanFly;
 use App\Interfaces\CanSwim;
-use App\Traits\Foot;
 
-class Parrot extends Animal implements CanSwim
+
+class Parrot extends Animal implements CanFly
 {
-    use Foot;
-
     protected function getNoise(): string
     {
         return "coco";
-
     }
 }

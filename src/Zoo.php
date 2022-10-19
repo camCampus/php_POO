@@ -7,7 +7,8 @@ use App\Interfaces\CanFly;
 use App\Interfaces\CanSwim;
 use App\Interfaces\CanWalk;
 
-class Zoo {
+class Zoo
+{
     private static Enclosure $aquarium;
     private static Enclosure $aviary;
     private static Enclosure $fence;
@@ -22,14 +23,19 @@ class Zoo {
 
     public static function addAnimal(Animal $animal)
     {
-        if ($animal instanceof CanSwim){
+        if ($animal instanceof CanSwim) {
             self::$aquarium->addAnimal($animal);
         }
-        if ($animal instanceof CanFly){
+        if ($animal instanceof CanFly) {
+            self::$aviary->addAnimal($animal);
+        }
+        if ($animal instanceof CanWalk) {
             self::$fence->addAnimal($animal);
         }
-        if ($animal instanceof CanWalk){
-            self::$fence->addAnimal($animal);
-        }
+    }
+
+    public static function visitTheZoo()
+    {
+        echo "Aquarium =>".PHP_EOL. self::$aquarium .PHP_EOL. "Fence =>" .PHP_EOL. self::$fence .PHP_EOL. "Aviary =>" .PHP_EOL. self::$aviary ;
     }
 }
