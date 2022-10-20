@@ -6,6 +6,7 @@ use App\Animal;
 
 class Enclosure
 {
+
     /** @var Animal[] $animals */
     private array $animals = [];
 

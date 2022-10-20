@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Caracteristique\Cara;
 use App\Enclosure\Enclosure;
 use App\Interfaces\CanFly;
 use App\Interfaces\CanSwim;
@@ -9,26 +10,34 @@ use App\Interfaces\CanWalk;
 
 class Zoo
 {
+
+    private static bool $isInit = false;
+
     private static Enclosure $aquarium;
     private static Enclosure $aviary;
     private static Enclosure $fence;
 
-    public function __construct()
+    private static function init(): void
     {
-        //Création d'un obj Enclos
         self::$aquarium = new Enclosure;
         self::$aviary = new Enclosure;
         self::$fence = new Enclosure;
+
+        self::$isInit = true;
     }
 
     public static function addAnimal(Animal $animal)
     {
+        if (!self::$isInit)
+            self::init();
+
         if ($animal instanceof CanSwim) {
             self::$aquarium->addAnimal($animal);
         }
         if ($animal instanceof CanFly) {
             self::$aviary->addAnimal($animal);
         }
+
         if ($animal instanceof CanWalk) {
             self::$fence->addAnimal($animal);
         }
